@@ -1,6 +1,7 @@
 ### This is a test project.
 
-# 1. Database structure for Example 1 in file:
+# 1. Example 1
+ - Database structure for Example 1 in file:
 	_example1.sql_
 
 # 2. Example 2

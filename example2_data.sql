@@ -14,14 +14,9 @@ INSERT INTO `users` (`name`, `gender`, `email`) VALUES
  ('user13', 1, ''),
  ('user14', 1, 'user14@vk.com, user14@microsoft.com, user14@facebook.com'),
  ('user15', 1, 'user15@mail.ru ,user15@yandex.ru, user15@gmail.com'),
- ('user16', 1, 'user16@gmail.com ,user16@invalid.com, user16@domain2.com'),
+ ('user16', 1, 'user16@gmail.com ,user16@mail.ru, new_user16@gmail.com'),
  ('user17', 1, 'user17@yahoo.com'),
  ('user18', 1, 'user18@mail.ru, user18@rbc.ru'),
  ('user19', 1, 'user19@yandex.ru, user19@mail.ru'),
  ('user20', 1, 'user20@gmail.com, user20@rbc.ru, user20@yahoo.com');
  
-CREATE TABLE _domains (
-  `domain`  VARCHAR(128) NOT NULL,
-  `counter` int(10)      NOT NULL,
-  PRIMARY KEY (`domain`)
-) ENGINE = Memory

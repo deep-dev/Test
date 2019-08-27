@@ -139,51 +139,51 @@ class EmailCountProcessor
 	public function clearPreviousState()
 	{
 		if (file_exists($this->stateFileName)) {
-            unlink($this->stateFileName);
-        }
-        return $this;
+			unlink($this->stateFileName);
+		}
+		return $this;
 	}
 
 	/* Load saved state from file */
 	protected function loadCurrentState()
     {
-        if (!file_exists($this->stateFileName)) {
-            return;
-        }
-        $fd = fopen($this->stateFileName, 'r');
-        $data = fread($fd, 1024);
-        fclose($fd);
-        $tmp = json_decode($data, true);
-        $this->currentId = $tmp['currentId'];
-        if (!empty($tmp['counters']) && is_array($tmp['counters'])) {
-            $this->domainsCount = $tmp['counters'];
-        }
-    }
+		if (!file_exists($this->stateFileName)) {
+			return;
+		}
+		$fd = fopen($this->stateFileName, 'r');
+		$data = fread($fd, 1024);
+		fclose($fd);
+		$tmp = json_decode($data, true);
+		$this->currentId = $tmp['currentId'];
+		if (!empty($tmp['counters']) && is_array($tmp['counters'])) {
+			$this->domainsCount = $tmp['counters'];
+		}
+	}
 
 	/* Save working state to file */
     protected function saveCurrentState()
     {
 		$my_json = array(
-            'currentId'    => $this->currentId,
-            'counters' => $this->domainsCount,
-        );
-		
-        if (file_exists($this->stateFileName)) {
-            $fd = fopen($this->stateFileName, 'a+');
-        } else {
-            $fd = fopen($this->stateFileName, 'w');
-        }
-        if (!$fd) {
-            throw new \RuntimeException('Failed to open state file "'.$this->stateFileName.'"');
-        }
-        flock($fd, LOCK_EX);
-        ftruncate($fd, 0);
-        fseek($fd, 0, SEEK_SET);
-        fwrite($fd, json_encode($my_json));
-        fflush($fd);
-        flock($fd, LOCK_UN);
-        fclose($fd);
-    }
+			'currentId'    => $this->currentId,
+			'counters' => $this->domainsCount,
+		);
+
+		if (file_exists($this->stateFileName)) {
+			$fd = fopen($this->stateFileName, 'a+');
+		} else {
+			$fd = fopen($this->stateFileName, 'w');
+		}
+		if (!$fd) {
+			throw new \RuntimeException('Failed to open state file "'.$this->stateFileName.'"');
+		}
+		flock($fd, LOCK_EX);
+		ftruncate($fd, 0);
+		fseek($fd, 0, SEEK_SET);
+		fwrite($fd, json_encode($my_json));
+		fflush($fd);
+		flock($fd, LOCK_UN);
+		fclose($fd);
+	}
 }
 
 /* Connecting to db */

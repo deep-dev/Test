@@ -1,10 +1,14 @@
-This is a test project.
+### This is a test project.
 
-1. Database structure for Example 1 in file:
-	example1.sql
+# 1. Database structure for Example 1 in file:
+	_example1.sql_
 
-2. Example 2
+# 2. Example 2
  - Sources for Example 2 in file:
-	example2.php
+	_example2.php_
  - Database test data for Example 2 in file:
-	example2_data.sql
+	_example2_data.sql_
+	
+# 3. Example 3
+ - Source for Example 3 in file:
+	_example3.php_

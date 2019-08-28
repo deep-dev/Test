@@ -26,7 +26,7 @@ class File
 	
     /**
      * Represents a getInstance
-	 * @param string $path - file name for processed
+     * @param string $path - file name for processed
      */
     public static function getInstance($path)
     {
@@ -36,9 +36,9 @@ class File
         return self::$instances[$path];
     }
 
-	/**
-	 * Close file and reset to 0 all parameters
-	 */
+    /**
+     * Close file and reset to 0 all parameters
+     */
     public function close()
     {
         if ($this->handle) {
@@ -50,15 +50,15 @@ class File
     }
 	
     /**
-      * Check file descriptor return bool True if closed, false if is open
-	  */	  
+     * Check file descriptor return bool True if closed, false if is open
+     */	  
     public function isClosed()
     {
         return (bool) $this->file === null;
     }
 	
     public function getCount() {
-		return ($this->isClosed()) ?  false : $this->count;
+        return ($this->isClosed()) ?  false : $this->count;
     }
 	
     public function getString($index) {
@@ -91,39 +91,41 @@ class FileIterator implements SeekableIterator
         $this->currentOffset = $currentOffset;
     }
 	
-	/**
-	 * Rewind to start position in file
-	 */
+    /**
+     * Rewind to start position in file
+     */
     public function rewind()
     {
         $this->currentOffset = 0;
     }
 	
-	/**
-	 * Getting string with current position
-	 */
+    /**
+     * Getting string with current position
+     */
     public function current()
     {
         return $this->file->getString($this->currentOffset);
     }
 
-    /* return current offset */
+    /**
+     * return current offset
+     */
     public function key()
     {
         return $this->currentOffset;
     }
 	
-	/**
-	 * Rewind to next position in file
-	 */
+    /**
+     * Rewind to next position in file
+     */
     public function next()
     {
         ++$this->currentOffset;
     }
 
-	/**
-	 * Validate position in file
-	 */	
+    /**
+     * Validate position in file
+     */
     public function valid()
     {
         return $this->currentOffset < $this->file->getCount();

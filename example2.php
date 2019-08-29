@@ -41,7 +41,7 @@ class EmailCountProcessor
 		
 		try {
 			$this->loadCurrentState();
-			echo('Getting data from table users with id: ' . $this->currentId);
+			echo('Getting data from table users with id: ' . $this->currentId . "<br>\n");
 			
 			do {
 				$stmt = $this->getSelectStatement($this->currentId);
